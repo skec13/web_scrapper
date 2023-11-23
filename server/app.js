@@ -4,16 +4,20 @@ const dt = require('./index.js');
 
 const data = require('./public/data.json');
 
+//const ip = "10.187.64.103";
+const port = 8080;
+
 const app = express();
 
 app.use(express.static('./public'));
 
 app.get("/api", (req, res) => {
     res.json(data);
+    console.log("Get request: " + new Date());
 });
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+app.listen(port, () => {
+    console.log(`Server running on localhost:${port}`);
 });
 
 

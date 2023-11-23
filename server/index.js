@@ -9,13 +9,12 @@ const file = require(fileName);
 
 
 
-
 ///////////////////////// product urls ////////////////////////////////
-const intersportUrl1 = "https://www.intersport.si/catalogsearch/result/?q=lunargato";
+const intersportUrl1 = "https://www.intersport.si/all-products?search=lunargato";
 const eleventeamsportUrl1 = "https://11teamsports.si/c/nogometni-cevlji-nike/model-lunargato";
 const sportsdirectUrl1 = "https://sl.sportsdirect.com/searchresults?descriptionfilter=lunar%20gato";
 const sportvisionUrl1 = "https://www.sportvision.si/izdelki?search=lunargato";
-const rgolUrl1 = "https://www.r-gol.com/sl/search?phrase=lunargato&search_type=default";
+const rgolUrl1 = "https://www.r-gol.com/sl/search?phrase=l unargato&search_type=default";
 //////////////////////////////////////////////////////////////////////
 
 //////////////////////// scrap intersport ////////////////////////////////
@@ -64,7 +63,6 @@ async function scrapeIntersport(url) {
 
     }
   
-
     browser.close();
 }
 /////////////////////////////////////////////////////////////////////////
@@ -206,7 +204,7 @@ async function scrapeSportvision(url) {
         }catch(error){}
 
         try{
-            img = await page.evaluate((el) => el.querySelector(".img-responsive.lozad.fade").getAttribute("src"), producthandle);
+            img = await page.evaluate((el) => el.querySelector(".img-responsive").getAttribute("src"), producthandle);
             img = "https://sportvision.si" + img;
         }catch(error){}
 
@@ -257,7 +255,7 @@ async function scrapeRgol(url) {
         }catch(error){}
 
         try{
-            img = await page.evaluate((el) => el.querySelector(".img-fluid.image-for-product-brick").getAttribute("src"), producthandle);
+            img = await page.evaluate((el) => el.querySelector(".img-fluid").getAttribute("src"), producthandle);
         }catch(error){}
 
 
